@@ -147,3 +147,7 @@ select*from worker where department='Admin' order by salary desc limit 3;
 
 select department, count(department) as total_employees from workers 
 where department='HR' or department='Account' group by department;
+
+select department, count(department) as total_employees from worker
+group by department
+order by total_employees desc;
