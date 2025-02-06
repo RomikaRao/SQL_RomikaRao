@@ -151,3 +151,13 @@ where department='HR' or department='Account' group by department;
 select department, count(department) as total_employees from worker
 group by department
 order by total_employees desc;
+
+create table Persons(
+ID int primary key,
+LastName varchar(255) not null unique,
+FirstName varchar(255) not null unique,
+Age int);
+
+desc persons;
+
+
