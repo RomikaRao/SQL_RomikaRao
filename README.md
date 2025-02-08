@@ -160,4 +160,73 @@ Age int);
 
 desc persons;
 
+use org123;
+CREATE TABLE Student (
+    sno INT PRIMARY KEY,
+    sname VARCHAR(20),
+    age INT
+);
+
+INSERT INTO Student(sno, sname,age)
+VALUES(1,'Ankit',17),
+       (2,'Ramya',18),
+       (3,'Ram',16);
+
+SELECT *FROM Student;
+
+CREATE TABLE Course (
+    cno INT PRIMARY KEY,
+    cname VARCHAR(20)
+);
+
+INSERT INTO Course(cno, cname)
+VALUES(101,'c'),
+       (102,'c++'),
+       (103,'DBMS');
+
+SELECT *FROM Course;
+
+CREATE TABLE Enroll (
+    sno INT,
+    cno INT,
+    jdate date,
+    PRIMARY KEY(sno,cno),
+    FOREIGN KEY(sno) REFERENCES Student(sno) ON DELETE CASCADE, 
+    FOREIGN KEY(cno) REFERENCES Course(cno) ON DELETE CASCADE
+);
+
+INSERT INTO Enroll(sno,cno,jdate)
+VALUES(1, 101, '2021-06-05'),
+       (1, 102, '2021-06-05'),
+       (2, 103, '2021-06-06');
+
+SELECT *FROM Enroll;
+
+create database saturday;
+use saturday;
+
+create table category(
+c_id int primary key,
+c_name varchar(25) not null unique,
+c_decrp varchar(250) not null
+);
+
+insert into category values (101, 'electronics', 'it stores all set of electronics items');
+select * from category;
+desc category;
+
+CREATE TABLE Products (
+    P_ID int primary key,
+    p_Name varchar(250) NOT NULL,
+    c_id int ,
+    CONSTRAINT c_id FOREIGN KEY (c_id)
+    REFERENCES category(c_id) on delete cascade
+);
+
+insert into products values (904, 'INTEL I5 Processor', 101);
+select * from products;
+delete from category where c_id=101;
+select * from category;
+update category set c_name='electrical' where c_id=101;
+
 
