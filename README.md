@@ -256,3 +256,31 @@ create view admin_more_salary as
 select * from workers where department='Admin' and salary>100000 order by salary desc;
 
 select * from admin_more_salary;
+
+CREATE TABLE Bonus (
+	WORKER_REF_ID INT,
+	BONUS_AMOUNT INT(10),
+	BONUS_DATE DATETIME,
+	FOREIGN KEY (WORKER_REF_ID)
+		REFERENCES Workers(WORKER_ID)
+        ON DELETE CASCADE
+);
+
+INSERT INTO Bonus (WORKER_REF_ID, BONUS_AMOUNT, BONUS_DATE) VALUES
+		(001, 5000, '16-02-20'),
+		(002, 3000, '16-06-11'),
+		(003, 4000, '16-02-20'),
+		(001, 4500, '16-02-20'),
+		(002, 3500, '16-06-11');
+
+select * from workers where first_name not in('Vipul','Satish');
+
+select * from workers where first_name like '%a';
+
+select * from workers where first_name like '______h';
+
+select department,count(worker_id) from workers group by department order by count(worker_id) desc;
+
+SELECT worker_id, first_name from workers
+UNION ALL
+SELECT worker_id, first_name from workers;
