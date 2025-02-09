@@ -229,4 +229,30 @@ delete from category where c_id=101;
 select * from category;
 update category set c_name='electrical' where c_id=101;
 
+CREATE TABLE Persons (
+    ID int NOT NULL,
+    LastName varchar(255) NOT NULL,
+    FirstName varchar(255),
+    Age int,
+    CHECK (Age>=18)
+);
 
+desc persons;
+
+ALTER TABLE Persons ADD CHECK (Age>=18);
+
+CREATE TABLE Person (
+    ID int NOT NULL,
+    LastName varchar(255) NOT NULL,
+    FirstName varchar(255),
+    Age int,
+    City varchar(255) DEFAULT 'Coimbatore'
+);
+
+select * from workers;
+select*from workers where salary like'8%';
+
+create view admin_more_salary as
+select * from workers where department='Admin' and salary>100000 order by salary desc;
+
+select * from admin_more_salary;
