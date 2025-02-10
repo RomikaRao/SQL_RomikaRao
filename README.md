@@ -284,3 +284,41 @@ select department,count(worker_id) from workers group by department order by cou
 SELECT worker_id, first_name from workers
 UNION ALL
 SELECT worker_id, first_name from workers;
+
+select department,count(department) from workers 
+where department in('admin','account') group by department;
+
+select count(department) as highest_head_count, department from workers 
+group by department having count(department)>=3;
+
+SELECT department, COUNT(*) AS department_count
+FROM worker
+GROUP BY department
+ORDER BY department_count DESC
+LIMIT 1 OFFSET 1;
+
+create table vitBhopal (id int primary key, name varchar(20) not null,
+department varchar(25) not null);
+insert into vitbhopal values (104,'Karthik','cs'),(103,'Arun','cs');
+
+create table vit (id int primary key, name varchar(20) not null,
+college varchar(25) not null);
+insert into vit values (104,'Karthik','chennai'),(103,'Arun','bhopal');
+select * from vit;
+
+select * from vitbhopal;
+
+select name as WinnerOfTheYear from vitbhopal
+where id = (select id from vit where college='bhopal');
+
+# Write an SQL query to fetch the departments that have less than five people in it.
+
+select department,count(department) as People from workers group by department having count(worker_id)<5;
+
+# Write an SQL query to fetch the last five records from a table.
+
+(SELECT * FROM workers ORDER BY worker_ID DESC LIMIT 5)
+ORDER BY worker_ID ASC;
+
+
+
