@@ -320,5 +320,32 @@ select department,count(department) as People from workers group by department h
 (SELECT * FROM workers ORDER BY worker_ID DESC LIMIT 5)
 ORDER BY worker_ID ASC;
 
+use saturday;
 
+create table student(
+s_id int primary key,
+s_name varchar(30) not null,
+s_department varchar(25) not null
+);
+
+insert into student values (1001,"Jayanth","ECE"),(1002,"Praveen","CSE"),(1003,"Logesh","Mech"),(1006,'karthick','Aero'),(1007,"Mahesh","Civil");
+
+select * from student;
+
+create table VIT(
+s_id int primary key,
+s_cgpa varchar(5) not null
+);
+insert into vit values (1001,'7.2'),(1002,'8.6'),(1007,'9.25');
+select * from vit;
+
+select * from student cross join vit;
+
+select * from student inner join vit where student.s_id = vit.s_id;
+
+select * from student natural join vit;
+
+select * from student left outer join vit on student.s_id = vit.s_id;
+
+select * from student right outer join vit on student.s_id = vit.s_id;
 
