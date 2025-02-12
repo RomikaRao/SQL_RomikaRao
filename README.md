@@ -1,4 +1,4 @@
-# SQL_Practice
+# SQL_RomikaRao
 
 show databases;
 create database VIT;
